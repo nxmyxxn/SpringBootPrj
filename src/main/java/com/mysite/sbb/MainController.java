@@ -13,5 +13,10 @@ public class MainController {
 		return "sbb에 오신 것을 화이팅";
 	}
 	
+	@GetMapping("/")
+	public String root() {
+		return "redirect:/question/list";
+	}
+	
 
 }
