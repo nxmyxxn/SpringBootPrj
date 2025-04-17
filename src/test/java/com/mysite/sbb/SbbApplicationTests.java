@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerRepository;
+import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
 
 
@@ -28,19 +29,19 @@ class SbbApplicationTests {
 
     @Test
     //질문 데이터 저장
-//    void testJpa() {        
-//        Question q1 = new Question();
-//        q1.setSubject("sbb가 무엇인가요?");
-//        q1.setContent("sbb에 대해서 알고 싶습니다.");
-//        q1.setCreateDate(LocalDateTime.now());
-//        this.questionRepository.save(q1);  // 첫번째 질문 저장
-//
-//        Question q2 = new Question();
-//        q2.setSubject("스프링부트 모델 질문입니다.");
-//        q2.setContent("id는 자동으로 생성되나요?");
-//        q2.setCreateDate(LocalDateTime.now());
-//        this.questionRepository.save(q2);  // 두번째 질문 저장
-//    }
+    void testJpa() {        
+        Question q1 = new Question();
+        q1.setSubject("sbb가 무엇인가요?");
+        q1.setContent("sbb에 대해서 알고 싶습니다.");
+        q1.setCreateDate(LocalDateTime.now());
+        this.questionRepository.save(q1);  // 첫번째 질문 저장
+
+        Question q2 = new Question();
+        q2.setSubject("스프링부트 모델 질문입니다.");
+        q2.setContent("id는 자동으로 생성되나요?");
+        q2.setCreateDate(LocalDateTime.now());
+        this.questionRepository.save(q2);  // 두번째 질문 저장
+    }
     //findAll() 메서드 사용
 //    void testJpa() {
 //        List<Question> all = this.questionRepository.findAll();
@@ -58,7 +59,7 @@ class SbbApplicationTests {
 //        assertEquals("sbb가 무엇인가요?", q.getSubject());
 //    }
     
-    void testJpa() {
+//    void testJpa() {
 //        Optional<Question> oq = this.questionRepository.findById(1);
 //        if(oq.isPresent()) {
 //            Question q = oq.get();
@@ -96,10 +97,10 @@ class SbbApplicationTests {
 //        this.answerRepository.save(a);
     	
     	
-    	Optional<Answer> oa = this.answerRepository.findById(1);
-        assertTrue(oa.isPresent());
-        Answer a = oa.get();
-        assertEquals(2, a.getQuestion().getId());
-    	
-    }
+//    	Optional<Answer> oa = this.answerRepository.findById(1);
+//        assertTrue(oa.isPresent());
+//        Answer a = oa.get();
+//        assertEquals(2, a.getQuestion().getId());
+//    	
+//    }
 }
