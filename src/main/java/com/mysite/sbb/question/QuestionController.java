@@ -2,7 +2,7 @@ package com.mysite.sbb.question;
 
 import java.util.List;
 
-
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import lombok.RequiredArgsConstructor;
+import com.mysite.sbb.answer.AnswerForm;
+
 
 @RequestMapping("/question")
 @RequiredArgsConstructor
@@ -25,16 +27,15 @@ public class QuestionController {
 		
 		//매개변수로 Model을 지정하면 객체가 자동으로 생성된다.
 		//Model 객체는 java class와 template 간의 연결 고리 역할
-		public String list(Model model) {
+		public String list(Model model,@RequestParam(value="page", defaultValue="0") int page) {
 			//List<Question> questionList = this.questionRepository.findAll();
-			List<Question> questionList = this.questionService.getList();
-			System.out.println("question_list  "+questionList);
-			model.addAttribute("questionList", questionList);
+			Page<Question> paging = this.questionService.getList(page);
+	        model.addAttribute("paging", paging);
 			return "question_list";
 		}
 		
 		@GetMapping(value="/detail/{id}")
-		public String detail(Model model, @PathVariable("id") Integer id) {
+		public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
 			
 			Question question = this.questionService.getQuestion(id);
 	        model.addAttribute("question", question);
